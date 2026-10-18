@@ -148,23 +148,17 @@ scanpath/
                        image metrics: image_nrmse, image_correlation
   optimisation.py   4  grid_search (optionally paired seeds, 2 s.e. rule) · random_search ·
                        pattern_search · de_search · gp_search (GP + EI); limits, pareto_front
-  kalinin.py        bridge to Kalinin's instrument_transfer (37 families, SPM model, 2 metrics);
-                    reads his repo from your clone, never writes to it
 examples/           01 run one path · 02 Lissajous grid · 03 swap & add modules ·
                     04 loop prototype · 05 full pipeline (one CONFIG block, any search) ·
                     06 constrained, equal-dose comparison and search benchmark ·
                     07 adding a path; pixel-list scans of Palos et al. 2026
-notebooks/          full_pipeline.ipynb (end to end, start here) · scan_path_walkthrough.ipynb ·
+notebooks/          full_pipeline.ipynb (end to end, start here) ·
                     originals from teammates: Scan_Path_Loop_Prototype.ipynb,
                     Scan_Path_Workflow.ipynb, Optimization_Benchmark.ipynb
 docs/               integrating_loop_prototype.md · integrating_workflow_notebooks.md ·
                     adding_a_path.md
 tests/              contract tests
 ```
-
-Kalinin's GitHub repo is a **read-only reference**: it is never modified. `scanpath.kalinin`
-finds it through `sys.path` or the `SCANPATH_REFERENCE_SRC` environment variable; the tests
-and the walkthrough notebook look for a `ScanPath` clone next to `microscopy scan path`.
 
 ## 6. Decisions for the team
 

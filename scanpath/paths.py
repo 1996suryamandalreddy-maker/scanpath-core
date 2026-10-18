@@ -77,7 +77,7 @@ def rose(s, order=3, cycles=3, radius=1.0, angle_deg=0.0):
     """Polar rose r = radius cos(order theta), traced `cycles` times ("flower").
 
     Odd order gives `order` petals, even order 2 x `order`. The same curve as Kalinin's
-    k_rose (k = order, n_turns = cycles).
+    rose curve (k = order, n_turns = cycles).
     """
     theta = 2 * np.pi * cycles * s
     r = radius * np.cos(order * theta)

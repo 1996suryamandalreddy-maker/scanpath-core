@@ -29,10 +29,7 @@ What's in it:
   in `notebooks/`): measurement events and dose in every `Trajectory`, equal-dose budgets,
   strokes, closed loops, rose and pulse-lattice paths, an exact lag model, motion metrics,
   constraints with feasibility-first selection, and three more searches. How it was
-  integrated: `docs/integrating_workflow_notebooks.md`;
-* **Kalinin's package** through a bridge (`scanpath/kalinin.py`): 37 more path families,
-  his SPM scanner model and two metrics, read from a clone of his GitHub repo that is
-  used as a reference and never modified.
+  integrated: `docs/integrating_workflow_notebooks.md`.
 
 ```python
 import scanpath as sp
@@ -82,9 +79,6 @@ Or install it: `pip install -e .`. Figures and the grid CSV go to `figures/`.
 
 `notebooks/full_pipeline.ipynb` is the end-to-end demonstration: path parameters, both kinds of
 instrument model, swappable metrics, every search on the same budget, constraints.
-`notebooks/scan_path_walkthrough.ipynb` walks through every stage with our and Kalinin's 49 path families
-(about two minutes). It expects Kalinin's repo cloned as `ScanPath` next to
-`microscopy scan path`; change `REFERENCE` in its first code cell if yours is elsewhere.
 
 ## What the examples show
 

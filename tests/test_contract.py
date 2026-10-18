@@ -1,8 +1,5 @@
 """Contract tests: every registered plug-in -- including ones added later -- is checked
 automatically. Run with `python -m pytest tests` or `python tests/test_contract.py`.
-
-Kalinin's plug-ins are included when his repo can be found (SCANPATH_REFERENCE_SRC, or a
-ScanPath clone next to "microscopy scan path"); otherwise they are skipped.
 """
 import sys
 from pathlib import Path
@@ -12,15 +9,6 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import scanpath as sp  # noqa: E402
-
-_sibling = ROOT.parents[1] / "ScanPath" / "src"          # read-only reference clone
-if _sibling.is_dir() and str(_sibling) not in sys.path:
-    sys.path.append(str(_sibling))
-try:
-    import scanpath.kalinin  # noqa: E402,F401   registers Kalinin's plug-ins
-    HAVE_KALININ = True
-except ImportError:
-    HAVE_KALININ = False
 
 BUDGET = sp.Budget(fov_nm=50, duration_s=0.1, rate_hz=50_000)   # 5,000 samples
 SAMPLE = sp.Sample.synthetic(BUDGET.fov_nm, size=48, features=15, seed=1)
@@ -79,8 +67,7 @@ def test_ideal_instrument_has_zero_trajectory_error():
 
 
 def test_every_metric_returns_a_finite_number():
-    for family in ("raster", "lissajous", "serpentine", "hybrid", "hilbert") + (
-            ("k_hilbert",) if HAVE_KALININ else ()):
+    for family in ("raster", "lissajous", "serpentine", "hybrid", "hilbert"):
         scores = sp.run(family, "lowpass", None, BUDGET, SAMPLE).scores
         assert set(scores) == set(sp.METRICS)
         assert all(np.isfinite(v) for v in scores.values()), (family, scores)
@@ -292,15 +279,6 @@ def test_pareto_front_keeps_only_undominated_rows():
             {"rms_error_nm": 2, "coverage": 0.4}, {"rms_error_nm": 0.5, "coverage": 0.3}]
     front = sp.pareto_front(rows, ["rms_error_nm", "coverage"])
     assert rows[2] not in front and len(front) == 3
-
-
-def test_rose_is_kalinins_rose_curve():
-    if not HAVE_KALININ:
-        return
-    budget = sp.Budget(fov_nm=1.0, duration_s=1.0, rate_hz=1000)
-    ours = sp.make_path("rose", budget, order=5, cycles=4, radius=0.96).xy
-    his = sp.make_path("k_rose", budget, k=5, n_turns=4).xy
-    assert np.abs(ours - his).max() < 2e-3                # his is resampled to our time axis
 
 
 def test_pixel_list_scans_visit_every_pixel_once_in_the_published_order():

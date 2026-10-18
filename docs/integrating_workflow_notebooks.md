@@ -22,7 +22,7 @@ The experiment itself runs on the package as `examples/06_constrained_benchmark.
 | `PulseLattice` (dwell at lattice sites, transfers blanked) | `pulse_lattice` in `paths.py`; shares a `_dwell` helper with `sparse` | **new**; travel time ∝ hop length (his: equal blocks per site) |
 | `Spiral` (constant angular rate, radius, orientation) | our `spiral` is constant area rate; gained `radius` | kept ours; different spiral |
 | `Lissajous(cycles, ratio, phase)` | `lissajous(nx, ny, phase_deg)`; nx = cycles, ny = cycles × ratio | duplicate, not added |
-| `Flower` = Kalinin's rose curve | `rose`; tested equal to `k_rose` when his repo is present | native, so it works without his repo |
+| `Flower` = Kalinin's rose curve | `rose` | native |
 | `LagInstrument(tau, drift)` exact for piecewise-linear commands | `lowpass` now uses the same exact response (`hold="linear"`), or the exact response to a DAC staircase (`hold="step"`); drift stays a separate model, combined with `chain` | **fix** (see below) |
 | `IdealInstrument` | `ideal` | duplicate |
 | `distortion` → rms_distortion | `rms_error_nm` | duplicate |
