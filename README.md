@@ -103,8 +103,7 @@ lag half a sample too little, so numbers involving it are higher than in earlier
 (details in `docs/integrating_workflow_notebooks.md`).
 
 The interfaces and the open decisions are in **[INTERFACES.md](INTERFACES.md)**. New to the
-code? `docs/clean_code.md` explains the habits the package follows, with examples, and
-`docs/adding_a_path.md` shows how to add a scan path.
+code? `docs/adding_a_path.md` shows how to add a scan path.
 Instrument parameters are illustrative, not calibrated.
 
 ## License

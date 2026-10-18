@@ -158,7 +158,7 @@ notebooks/          full_pipeline.ipynb (end to end, start here) · scan_path_wa
                     originals from teammates: Scan_Path_Loop_Prototype.ipynb,
                     Scan_Path_Workflow.ipynb, Optimization_Benchmark.ipynb
 docs/               integrating_loop_prototype.md · integrating_workflow_notebooks.md ·
-                    clean_code.md · adding_a_path.md
+                    adding_a_path.md
 tests/              contract tests
 ```
 
