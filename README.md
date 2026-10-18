@@ -106,3 +106,7 @@ The interfaces and the open decisions are in **[INTERFACES.md](INTERFACES.md)**.
 code? `docs/clean_code.md` explains the habits the package follows, with examples, and
 `docs/adding_a_path.md` shows how to add a scan path.
 Instrument parameters are illustrative, not calibrated.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
